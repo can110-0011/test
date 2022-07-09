@@ -1,0 +1,24 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+<body>
+
+<p>リンク:<br>
+<input type="text" id="URL" value="https://localhost/F12345678" size="30"></p>
+<input type="button" value="実行" id="conv" pys-onClick="conv"></p>
+<p>ID:<br><input type="text" id="IDt" size="15"></p>
+
+<py-script>
+def conv(*args, **kwargs):
+    import re
+    url = Element("URL").element.value
+    m = re.search(r'F(\d{8,9})',url)
+    id = m.group(1) if m else ''
+    Element("IDt").element.value = id
+</py-script>
+
+</body>
+</html>
